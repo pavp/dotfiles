@@ -1,0 +1,128 @@
+{
+  "version": 3,
+  "lines": [
+    [
+      {
+        "id": "1",
+        "type": "model",
+        "color": "cyan"
+      },
+      {
+        "id": "946fa049-72c5-41d2-918b-de98a30ae7b2",
+        "type": "separator"
+      },
+      {
+        "id": "d1d1383c-c153-41b0-9f3a-dc35c8b9b749",
+        "type": "thinking-effort",
+        "color": "brightMagenta"
+      },
+      {
+        "id": "2",
+        "type": "separator"
+      },
+      {
+        "id": "5",
+        "type": "git-branch",
+        "color": "brightCyan"
+      },
+      {
+        "id": "6",
+        "type": "separator"
+      },
+      {
+        "id": "7",
+        "type": "git-changes",
+        "color": "yellow"
+      }
+    ],
+    [
+      {
+        "id": "c4834fad-b0c2-4cd1-b1f5-76def128cbaa",
+        "type": "tokens-cached",
+        "color": "brightYellow"
+      },
+      {
+        "id": "98401f72-3b51-4634-9fcd-5489120bf1ea",
+        "type": "separator"
+      },
+      {
+        "id": "53ea4897-039e-40ef-99a7-8b69d2a9e3a7",
+        "type": "tokens-input",
+        "color": "green"
+      },
+      {
+        "id": "524d175f-36c6-403f-bca8-74e134981a44",
+        "type": "separator"
+      },
+      {
+        "id": "8f0b1125-c189-4427-a268-2db6f7ee70c1",
+        "type": "tokens-output",
+        "color": "brightRed"
+      },
+      {
+        "id": "547bac1b-bb9d-4589-9b7f-d6e079011686",
+        "type": "separator"
+      },
+      {
+        "id": "35b2ec96-f6ea-4b72-a9c5-725f591618f1",
+        "type": "tokens-total",
+        "color": "white"
+      },
+      {
+        "id": "bdcb4748-b672-404e-81c6-a7eec0fd6a64",
+        "type": "separator"
+      },
+      {
+        "id": "a88322b5-e615-4aa2-9a5a-4d1d719af02d",
+        "type": "context-bar",
+        "color": "brightBlack"
+      }
+    ],
+    [
+      {
+        "id": "eda1eaf5-a8cb-442e-86d4-92ea85aecf02",
+        "type": "session-usage"
+      },
+      {
+        "id": "eb4424e0-4280-43b2-88ce-758d29d13580",
+        "type": "separator"
+      },
+      {
+        "id": "9ae6e11d-dfa5-4cd0-9a99-6d1210df8efa",
+        "type": "weekly-usage"
+      },
+      {
+        "id": "e1726606-14b5-42af-8509-7e6a4e31cd3a",
+        "type": "separator"
+      },
+      {
+        "id": "7af67b1a-af09-4c70-aaed-18bcb2b3e6c8",
+        "type": "reset-timer"
+      }
+    ]
+  ],
+  "flexMode": "full-minus-40",
+  "compactThreshold": 60,
+  "colorLevel": 2,
+  "inheritSeparatorColors": false,
+  "globalBold": false,
+  "gitCacheTtlSeconds": 5,
+  "minimalistMode": false,
+  "powerline": {
+    "enabled": false,
+    "separators": [
+      ""
+    ],
+    "separatorInvertBackground": [
+      false
+    ],
+    "startCaps": [],
+    "endCaps": [],
+    "autoAlign": false,
+    "continueThemeAcrossLines": false
+  },
+  "installation": {
+    "method": "pinned",
+    "installedVersion": "2.2.19"
+  }
+}

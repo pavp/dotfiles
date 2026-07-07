@@ -1,0 +1,13 @@
+{
+  "statusLine": {
+    "command": "ccstatusline",
+    "padding": 0,
+    "refreshInterval": 10,
+    "type": "command"
+  },
+  "model": "opus[1m]",
+  "effortLevel": "high",
+  "alwaysThinkingEnabled": false,
+  "agentPushNotifEnabled": true,
+  "inputNeededNotifEnabled": true
+}

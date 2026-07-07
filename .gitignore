@@ -1,0 +1,21 @@
+# Never commit machine-local secrets
+.zshrc.local
+
+# gh auth tokens — config.yml is versioned, hosts.yml is not
+gh/hosts.yml
+
+# SSH private keys (only ssh/config is versioned)
+ssh/id_*
+ssh/*.pub
+
+# Claude — never commit local overrides or runtime state
+ai/claude/**/settings.local.json
+ai/claude/**/*.log
+
+# gentle-ai / tooling artifacts
+.atl/
+openspec/
+
+# OS
+.DS_Store
+*~

@@ -1,0 +1,12 @@
+# SSH config — hosts and IdentityFile references only. Keys are NEVER
+# versioned; generate them per-machine (see README).
+
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+
+Host *
+    AddKeysToAgent yes
+    UseKeychain yes

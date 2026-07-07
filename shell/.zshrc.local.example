@@ -1,0 +1,13 @@
+# Copy to ~/.zshrc.local (gitignored, sourced at the end of ~/.zshrc).
+# Put machine-local secrets and per-machine overrides here — NEVER commit them.
+
+# ── Secrets ─────────────────────────────────────────────────────────
+# export NPM_TOKEN="your-token-here"
+
+# ── gh account switching (optional, per-machine) ────────────────────
+# git identity is handled by ~/.gitconfig + includeIf (see docs/git-identity.md).
+# gh auth is separate (it holds the auth token), so switch it with an alias:
+#
+# alias ghwork='gh auth switch --user <work-user>'
+# alias ghpersonal='gh auth switch --user <personal-user>'
+# alias ghwho='gh auth status 2>&1 | grep "Active account: true" -B1 | grep account'

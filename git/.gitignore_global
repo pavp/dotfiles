@@ -1,0 +1,11 @@
+*~
+.DS_Store
+
+**/.claude/settings.local.json
+
+# storywright output
+docs/storywright/
+
+# gentle-ai generated files
+.atl/
+openspec/

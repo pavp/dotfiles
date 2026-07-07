@@ -1,0 +1,21 @@
+{
+  "chat.agent.enabled": true,
+  "chat.agent.maxRequests": 100,
+  "chat.experimental.chatModeFiles.enabled": true,
+  "chat.tools.autoApprove": true,
+  "chat.viewSessions.orientation": "stacked",
+  "diffEditor.renderSideBySide": false,
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "editor.fontSize": 13,
+  "editor.formatOnSave": true,
+  "eslint.format.enable": true,
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "gitlens.ai.largePromptWarningThreshold": 50000,
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:claude-haiku-4.5",
+  "gitlens.views.commits.files.layout": "list",
+  "gitlens.views.repositories.branches.showStashes": true,
+  "workbench.colorTheme": "Dark Modern",
+  "workbench.sideBar.location": "right",
+  "claudeCode.preferredLocation": "panel"
+}

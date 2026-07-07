@@ -1,0 +1,45 @@
+[user]
+	name = pavp
+	email = pedrovillarreal@gmail.com
+
+[core]
+	excludesFile = ~/.gitignore_global
+	ignorecase = false
+	sshCommand = ssh -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = true
+
+[push]
+	autoSetupRemote = true
+
+[pager]
+	diff = delta
+	log = delta
+	reflog = delta
+	show = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true
+	line-numbers = true
+
+[diff]
+	colorMoved = default
+
+[credential "https://github.com"]
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/opt/homebrew/bin/gh auth git-credential
+
+# Personal identity above is the global default — you're always you.
+# Work/company identity is intentionally NOT versioned (it's ephemeral).
+# To add one on a machine, create ~/.gitconfig-work LOCALLY and include it
+# per-directory with an includeIf in your local git config — never commit it:
+#   [includeIf "gitdir:~/dev/work/"]
+#       path = ~/.gitconfig-work
