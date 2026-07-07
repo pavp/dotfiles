@@ -119,4 +119,5 @@ scaffolded, casks in a guarded block Linux skips.
 
 ## License
 
-MIT
+Personal dotfiles — private, not licensed for distribution. Take any idea you
+find useful, but this repo isn't published for reuse.
