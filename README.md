@@ -68,7 +68,7 @@ else (identity, delta, aliases) works immediately.
 | `ssh/` | `config` (hosts + key refs only — no keys) |
 | `terminal/herdr/` | herdr multiplexer config |
 | `editor/vscode/` | settings, keybindings, extension list |
-| `ai/` | `AGENTS.md` (agnostic source of truth) + `install-ai.sh` (gentle-ai, storywright, pi, skillkit, caveman) |
+| `ai/` | `AGENTS.md` (agnostic source of truth) + `install-ai.sh` (gentle-ai, engram, pi + gentle-pi ecosystem, storywright, ccstatusline, skillkit, caveman, context-mode, context7, frontend-design) |
 | `test/` | Docker-based isolated install test |
 
 ## Shell stack
@@ -104,6 +104,13 @@ Validates symlinks, tools on PATH, idempotency (runs install twice), and
 non-clobber (pre-existing files are backed up, not destroyed). Docker runs Linux,
 so this covers the cross-platform surface; macOS-only pieces (casks, `macos.sh`)
 are validated manually on first run.
+
+The install is **fully unattended**: it never blocks on a prompt. Tools that
+need auth use non-interactive flags (context7 `--oauth`, skills `-y -g`), and
+`install-ai.sh` closes stdin globally as a safety net, so any stray prompt takes
+its default instead of hanging. Anything that genuinely needs a human (GitHub
+SSH key, `gh auth`, engram allowlist) is deferred to the manual-steps summary at
+the end of the run.
 
 ## Portability
 
