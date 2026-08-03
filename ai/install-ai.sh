@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # install-ai.sh — AI tooling that brew can't handle (npm/npx/marketplace).
-# Brew-installable AI tools (rtk, gentle-ai, opencode, claude-code) live in the Brewfile.
+# Brew-installable AI tools (rtk, gentle-ai, opencode) live in the Brewfile.
+# claude-code is installed here instead — its cask is macOS-only (see below).
 # Each step checks presence before installing (idempotent).
 
 set -uo pipefail
@@ -59,6 +60,25 @@ todo() {
   if [ -n "${TODO_FILE:-}" ]; then printf '%s\n' "$1" >> "$TODO_FILE"
   else LOCAL_TODOS+=("$1"); fi
 }
+
+# ── claude-code (official installer) ────────────────────────────────
+# NOT in the Brewfile: the `claude-code` cask is macOS-only, so on Linux
+# Homebrew skipped it silently and the AI layer below configured a missing
+# agent. Anthropic's installer works on macOS and Linux and lands the binary
+# in ~/.local/bin (already on PATH via shell/.zshrc). Runs before the config
+# steps so the agent exists before we write its instructions.
+if command -v claude >/dev/null 2>&1; then
+  skip "claude-code (present)"
+else
+  log "installing claude-code"
+  # stdin is at EOF for this whole script (see `exec </dev/null` above), so the
+  # installer takes its defaults instead of prompting.
+  curl -fsSL https://claude.ai/install.sh | bash \
+    || skip "claude-code (install failed — retry manually: curl -fsSL https://claude.ai/install.sh | bash)"
+  # Put it on PATH for the REST of this run (npm/pi steps and gentle-ai may
+  # look for `claude`). Interactive shells get it from shell/.zshrc.
+  [ -d "$HOME/.local/bin" ] && export PATH="$PATH:$HOME/.local/bin"
+fi
 
 # ── Agnostic instructions: reference AGENTS.md from each agent ──────
 # ai/AGENTS.md is the single source of truth. We REFERENCE it per agent

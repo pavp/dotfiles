@@ -1,6 +1,6 @@
 # Brewfile — clean-slate. Only what the ideal setup needs.
 # Cross-platform formulae first; macOS-only casks in the guarded block at the end.
-# Install: brew bundle --file=./Brewfile   (Linux install skips the cask block)
+# Install: brew bundle --file=./Brewfile   (Homebrew skips macOS-only casks on Linux)
 
 # ── Taps ────────────────────────────────────────────────────────────
 tap "anomalyco/tap"
@@ -38,8 +38,12 @@ brew "rtk"                        # homebrew-core — token proxy
 brew "gentleman-programming/tap/gentle-ai"
 brew "anomalyco/tap/opencode"
 
-# ── macOS-only (casks) — Linux install skips this block ─────────────
-cask "claude-code"                # unify Claude Code under brew
+# ── macOS-only (casks) — Homebrew skips these on Linux ──────────────
+# Homebrew itself omits casks whose `supports_linux?` is false, warning
+# "requires macOS" (extend/os/linux/bundle/skipper.rb). No guard needed here.
+# claude-code is NOT here on purpose: as a cask it vanished silently on Linux,
+# leaving the AI layer configured for a missing agent. ai/install-ai.sh now
+# installs it on both platforms via Anthropic's official installer.
 cask "warp"                       # cask = macOS only; Linux via .deb/AppImage
 cask "visual-studio-code"
 

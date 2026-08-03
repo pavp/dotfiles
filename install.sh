@@ -164,8 +164,22 @@ else
 fi
 
 # Always-relevant manual steps
+
+# Clipboard command for the SSH-key step. pbcopy is macOS-only; on Linux it
+# depends on the session (wl-copy under Wayland, xclip under X11) and may not
+# be installed at all — so fall back to printing the key for manual copy.
+if [ "$OS" = "Darwin" ]; then
+  CLIP_CMD="pbcopy < ~/.ssh/id_ed25519.pub"
+elif command -v wl-copy >/dev/null 2>&1; then
+  CLIP_CMD="wl-copy < ~/.ssh/id_ed25519.pub"
+elif command -v xclip >/dev/null 2>&1; then
+  CLIP_CMD="xclip -sel clip < ~/.ssh/id_ed25519.pub"
+else
+  CLIP_CMD="bat ~/.ssh/id_ed25519.pub   (no clipboard tool — copy it by hand)"
+fi
+
 if ! ssh -T git@github.com 2>&1 | grep -q "successfully authenticated"; then
-  todo "Set up your SSH key for GitHub¦generate: ${C_CYAN}ssh-keygen -t ed25519 -C \"pedrovillarreal@gmail.com\"${C_RESET}¦copy it: ${C_CYAN}pbcopy < ~/.ssh/id_ed25519.pub${C_RESET}¦paste into GitHub → Settings → SSH keys¦verify: ${C_CYAN}ssh -T git@github.com${C_RESET}"
+  todo "Set up your SSH key for GitHub¦generate: ${C_CYAN}ssh-keygen -t ed25519 -C \"pedrovillarreal@gmail.com\"${C_RESET}¦copy it: ${C_CYAN}${CLIP_CMD}${C_RESET}¦paste into GitHub → Settings → SSH keys¦verify: ${C_CYAN}ssh -T git@github.com${C_RESET}"
 fi
 if command -v gh >/dev/null 2>&1 && ! gh auth status >/dev/null 2>&1; then
   todo "Authenticate the GitHub CLI¦run ${C_CYAN}gh auth login${C_RESET}¦choose GitHub.com → SSH → your key"

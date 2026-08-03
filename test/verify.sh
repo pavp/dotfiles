@@ -31,6 +31,17 @@ for t in starship zoxide atuin fzf eza bat fd rg git node; do
   if command -v "$t" >/dev/null 2>&1; then pass "$t"; else bad "$t missing"; fi
 done
 
+echo "== claude-code installed on Linux (cask is macOS-only) =="
+# Regression guard: claude-code used to live in the Brewfile as a cask, which
+# Homebrew silently skips on Linux — the AI layer then configured a missing
+# agent. ai/install-ai.sh installs it via Anthropic's installer instead.
+export PATH="$PATH:$HOME/.local/bin"
+if command -v claude >/dev/null 2>&1; then
+  pass "claude on PATH ($(command -v claude))"
+else
+  bad "claude missing — install-ai.sh did not install it"
+fi
+
 echo "== idempotency (second run must exit 0) =="
 if "$DOTFILES_DIR/install.sh" >/dev/null 2>&1; then pass "second run clean"; else bad "second run failed"; fi
 
