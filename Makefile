@@ -1,4 +1,4 @@
-.PHONY: install dry-run update brew-dump macos test
+.PHONY: install dry-run update brew-dump macos test test-guards
 
 install:   ## Run the installer
 	./install.sh
@@ -19,3 +19,6 @@ macos:     ## Apply macOS system defaults
 test:      ## Build+run isolated Docker test (Linux)
 	docker build -f test/Dockerfile -t dotfiles-test .
 	docker run --rm dotfiles-test /repo/test/verify.sh
+
+test-guards: ## Unit tests of the gentle-shell guards
+	cd ai/gentle-shell/extensions && node --test skill-gates-lib/gates.test.mjs pr-gate-lib/gate.test.mjs

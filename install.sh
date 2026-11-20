@@ -106,6 +106,18 @@ link "$DOTFILES_DIR/ssh/config"                "$HOME/.ssh/config"
 link "$DOTFILES_DIR/terminal/herdr/config.toml" "$HOME/.config/herdr/config.toml"
 link "$DOTFILES_DIR/ai/claude/ccstatusline/settings.json" "$HOME/.config/ccstatusline/settings.json"
 
+# gentle-shell extensions that enforce the skills ~/AGENTS.md requires. gentle-shell
+# loads every *.ts in its agent extensions folder; the *-lib folders hold their logic.
+GS_EXT="$HOME/.gentle-shell/agent/extensions"
+if [ -d "$HOME/.gentle-shell/agent" ]; then
+  for entry in pr-skills-guard.ts pr-gate-lib skill-gates.ts skill-gates-lib; do
+    link "$DOTFILES_DIR/ai/gentle-shell/extensions/$entry" "$GS_EXT/$entry"
+  done
+else
+  skip "gentle-shell extensions (gentle-shell not installed)"
+  todo "Link the gentle-shell skill guards once gentle-shell is installed¦re-run: ${C_CYAN}./install.sh${C_RESET}"
+fi
+
 if [ "$OS" = "Darwin" ]; then
   VS="$HOME/Library/Application Support/Code/User"
   link "$DOTFILES_DIR/editor/vscode/settings.json"    "$VS/settings.json"

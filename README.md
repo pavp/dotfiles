@@ -69,6 +69,7 @@ else (identity, delta, aliases) works immediately.
 | `terminal/herdr/` | herdr multiplexer config |
 | `editor/vscode/` | settings, keybindings, extension list |
 | `ai/` | `AGENTS.md` (agnostic source of truth) + `install-ai.sh` (gentle-ai, engram, pi + gentle-pi ecosystem, storywright, ccstatusline, skillkit, caveman, context-mode, context7, frontend-design) |
+| `ai/gentle-shell/extensions/` | gentle-shell guards that enforce the skills `AGENTS.md` requires: block writes until `slice-plan` / the React and TS skills are read, gate PR bodies on `verify-before-pr` evidence, remind about `slice-plan` and `verify-before-pr`. Linked into `~/.gentle-shell/agent/extensions/` when gentle-shell is installed |
 | `test/` | Docker-based isolated install test |
 
 ## Shell stack
@@ -98,6 +99,7 @@ settings/logs.
 
 ```sh
 make test           # builds a clean Linux container, runs install.sh + verify.sh
+make test-guards    # unit tests of the gentle-shell guards (node --test)
 ```
 
 Validates symlinks, tools on PATH, idempotency (runs install twice), and
